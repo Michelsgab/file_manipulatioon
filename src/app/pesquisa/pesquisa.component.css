@@ -46,7 +46,7 @@ header{
 
 
 .pesquisa{
-  margin-top: 90px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +74,7 @@ header{
 }
 
 .card{
-  margin-top: 107px;
+  margin-top: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
