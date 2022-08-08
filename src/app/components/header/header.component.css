@@ -1,0 +1,37 @@
+header {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #bfbef9;
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 68px;
+  margin: 0 auto;
+}
+
+.img__logo {
+  width: 80px;
+  height: auto;
+}
+
+.lista__container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.lista__item {
+  list-style: none;
+  margin-left: 21px;
+}
+.lista__link {
+  text-decoration: none;
+  color: black;
+}
+.lista__link:hover {
+  color: #fff;
+}
