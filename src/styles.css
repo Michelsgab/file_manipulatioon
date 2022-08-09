@@ -8,14 +8,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
-}
-
-::-webkit-scrollbar-track {
-  background: #bfbef9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3554f9;
-  border-radius: 10px;
+  display: none;
 }
