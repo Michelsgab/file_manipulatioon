@@ -1,17 +1,16 @@
-<header>
-  <nav class="nav__container">
-    <img
-      src="/assets/img/gestor-de-projeto.png"
-      alt="Logo Gestor"
-      class="img__logo"
-    />
-    <ul class="lista__container">
-      <li class="lista__item">
-        <a routerLink="/pesquisa" class="lista__link">Pesquisa</a>
-      </li>
-      <li class="lista__item">
-        <a routerLink="/cadastro" class="lista__link">Cadastro</a>
-      </li>
-    </ul>
-  </nav>
-</header>
+<nav class="navbar">
+  <fa-icon [icon]="faBars"></fa-icon>
+  <img
+    src="/assets/img/gestor-de-projeto.png"
+    alt="Logo Gestor"
+    class="img__logo"
+  />
+  <ul>
+    <li>
+      <a class="item" routerLink="/pesquisa">Home</a>
+    </li>
+    <li>
+      <a class="item" routerLink="/cadastro">Cadastrar</a>
+    </li>
+  </ul>
+</nav>
