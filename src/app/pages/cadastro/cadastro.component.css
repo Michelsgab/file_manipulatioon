@@ -91,6 +91,12 @@ input:valid {
   border-color: #000f97;
 }
 
+@media (max-width: 992px) {
+  .container__cadastro {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 584px) {
   .container__cadastro {
     flex-direction: column;
