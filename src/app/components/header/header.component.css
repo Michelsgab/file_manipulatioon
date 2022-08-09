@@ -6,13 +6,17 @@
   padding: 0 10%;
 }
 
-.navbar > ul {
+.img__logo {
+  height: 5.5rem;
+}
+
+.lista {
   display: flex;
   list-style: none;
   align-items: center;
 }
 
-.navbar ul li {
+.lista__itens {
   margin: 0 10px;
   font-weight: 500;
   font-size: 16px;
@@ -25,37 +29,25 @@
   color: #111;
 }
 
-.navbar li a::before {
+.item::before {
   content: "";
   position: absolute;
   height: 3px;
   bottom: 0;
   left: 0;
   width: 0%;
-  background: blue;
+  background: #1d30dd;
   transition: all 0.4s ease;
 }
 
-.navbar ul li a::before {
+.item::before {
   width: 100%;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s ease;
 }
 
-.navbar ul li a:hover::before {
+.item:hover::before {
   transform: scaleX(1);
   transform-origin: left;
-}
-
-.img__logo {
-  height: 5.5rem;
-}
-
-.moon {
-  height: 10px;
-}
-
-.cursor {
-  cursor: pointer;
 }
