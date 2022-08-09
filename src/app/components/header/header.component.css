@@ -1,9 +1,9 @@
 .navbar {
-  background: #bfbef9;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 10%;
+  align-items: center;
+  background: #bfbef9;
+  justify-content: space-between;
 }
 
 .img__logo {
@@ -17,10 +17,10 @@
 }
 
 .lista__itens {
-  margin: 0 10px;
-  font-weight: 500;
-  font-size: 16px;
   padding: 6px 0;
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: 500;
   position: relative;
 }
 
@@ -30,12 +30,12 @@
 }
 
 .item::before {
-  content: "";
-  position: absolute;
-  height: 3px;
-  bottom: 0;
   left: 0;
   width: 0%;
+  bottom: 0;
+  height: 3px;
+  content: "";
+  position: absolute;
   background: #1d30dd;
   transition: all 0.4s ease;
 }
