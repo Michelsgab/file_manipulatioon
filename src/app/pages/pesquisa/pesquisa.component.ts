@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pesquisa.component.css']
 })
 export class PesquisaComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
