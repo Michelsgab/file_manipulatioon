@@ -1,10 +1,11 @@
-div {
+.component {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-main {
+.component__main {
   display: flex;
+  justify-content: center;
   flex-grow: 1;
 }
