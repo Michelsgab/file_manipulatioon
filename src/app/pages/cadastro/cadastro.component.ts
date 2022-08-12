@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroComponent implements OnInit {
 
+  imagem: string = "../../../assets/img/gestor-de-projeto.png"
+
   constructor() { }
 
   ngOnInit(): void {
