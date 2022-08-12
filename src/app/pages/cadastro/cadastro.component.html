@@ -2,11 +2,7 @@
 <div class="container">
   <div class="container__cadastro">
     <section class="section__imagem">
-      <img
-        src="../../../assets/img/gestor-de-projeto.png"
-        alt="Nome"
-        class="imagem"
-      />
+      <img [src]="imagem" alt="Nome" class="imagem" />
       <article class="btn">
         <button class="article__btn">Editar Imagem</button>
         <button class="article__btn">Salvar Currículo</button>
@@ -14,9 +10,9 @@
     </section>
     <aside>
       <form action="#">
-        <div class="user-details">
+        <div class="detalhes__form">
           <div class="input-box">
-            <label for="nomeCompleto" class="details">Nome completo: </label>
+            <label for="nomeCompleto" class="detalhes">Nome completo: </label>
             <input
               type="text"
               name="nomeCompleto"
@@ -25,7 +21,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="cargo" class="details">Cargo: </label>
+            <label for="cargo" class="detalhes">Cargo: </label>
             <input
               type="text"
               name="cargo"
@@ -34,7 +30,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="empresa" class="details">Empresa: </label>
+            <label for="empresa" class="detalhes">Empresa: </label>
             <input
               type="text"
               name="empresa"
@@ -43,7 +39,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="email" class="details">E-mail: </label>
+            <label for="email" class="detalhes">E-mail: </label>
             <input
               type="email"
               name="email"
@@ -52,7 +48,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="github" class="details">Github: </label>
+            <label for="github" class="detalhes">Github: </label>
             <input
               type="text"
               name="github"
@@ -61,7 +57,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="linkedin" class="details">Linkedin: </label>
+            <label for="linkedin" class="detalhes">Linkedin: </label>
             <input
               type="text"
               name="linkedin"
@@ -70,7 +66,7 @@
             />
           </div>
           <div class="input-box">
-            <label for="telefone" class="details">Telefone: </label>
+            <label for="telefone" class="detalhes">Telefone: </label>
             <input
               type="tel"
               name="telefone"
@@ -79,7 +75,9 @@
             />
           </div>
         </div>
-        <button class="article__btn">Salvar</button>
+        <div class="container__btn__salvar">
+          <button class="article__btn__salvar">Salvar</button>
+        </div>
       </form>
     </aside>
   </div>
