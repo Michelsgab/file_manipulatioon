@@ -3,10 +3,21 @@
   <div class="container__cadastro">
     <section class="section__imagem">
       <img [src]="imagem" alt="Nome" class="imagem" />
-      <article class="btn">
-        <button class="article__btn">Editar Imagem</button>
-        <button class="article__btn">Salvar Currículo</button>
-      </article>
+      <form class="btn">
+        <input
+          type="file"
+          name="imagem"
+          accept="image/png, image/jpeg"
+          class="article__btn"
+        />
+        <input
+          type="file"
+          name="curriculo"
+          accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+        text/plain, application/pdf"
+          class="article__btn"
+        />
+      </form>
     </section>
     <aside>
       <form action="#">
@@ -85,7 +96,7 @@
           </div>
         </div>
         <div class="container__btn__salvar">
-          <button class="article__btn__salvar">Salvar</button>
+          <button class="article__btn__salvar" type="submit">Salvar</button>
         </div>
       </form>
     </aside>
