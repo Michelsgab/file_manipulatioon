@@ -16,7 +16,7 @@ export class ProjetoService {
     return this.http.get<IFuncionario[]>(this.apiUrl);
   }
 
-  getId(id: number): Observable<IFuncionario> {
+  getId(id: string): Observable<IFuncionario> {
     return this.http.get<IFuncionario>(`${this.apiUrl}/${id}`);
   }
 
@@ -24,11 +24,11 @@ export class ProjetoService {
     return this.http.post<IFuncionario>(this.apiUrl, data);
   }
 
-  put(id: number, data: IFuncionario): Observable<IFuncionario> {
+  put(id: string, data: IFuncionario): Observable<IFuncionario> {
     return this.http.put<IFuncionario>(`${this.apiUrl}/${id}`, data);
   }
 
-  delete(id: number): Observable<IFuncionario> {
+  delete(id: string): Observable<IFuncionario> {
     return this.http.delete<IFuncionario>(`${this.apiUrl}/${id}`);
   }
 }
