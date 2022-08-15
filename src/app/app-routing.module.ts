@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/pesquisa', pathMatch: 'full' },
   { path: 'pesquisa', component: PesquisaComponent },
   { path: 'cadastro', component: CadastroComponent },
+  {path: 'cadastro/:id', component: CadastroComponent}
 ];
 
 @NgModule({

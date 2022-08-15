@@ -4,6 +4,17 @@
   margin: 10px;
 }
 
+.post-enviado {
+  background: #00cb73;
+  width: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border-radius: 3px;
+  color: #fff;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
