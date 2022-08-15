@@ -96,7 +96,17 @@ export class CadastroComponent implements OnInit {
     return this.objetoPost;
   }
 
+  printar(event : any){
+    const file = event.target.files[0]
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () =>{
+      console.log(reader.result)
+    }
+  }
+
   postOuPut() {
+
     const id: string | null = this.route.snapshot.paramMap.get('id');
 
     if (this.formulario.invalid) return;
