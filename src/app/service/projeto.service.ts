@@ -16,7 +16,7 @@ export class ProjetoService {
     return this.http.get<IFuncionario[]>(this.apiUrl);
   }
 
-  getId(id: string): Observable<IFuncionario> {
+  getId(id: string | null): Observable<IFuncionario> {
     return this.http.get<IFuncionario>(`${this.apiUrl}/${id}`);
   }
 

@@ -21,10 +21,10 @@ export class CadastroComponent implements OnInit {
   curriculo!: string | undefined;
   foto!: string | undefined;
   postEnviado: boolean = false;
-  existeFuncionario!: boolean;
+  existeFuncionario: boolean = false;
   objetoPost: IPostFuncionario = {} as IPostFuncionario;
   formulario!: FormGroup;
-  id: string = String(this.route.snapshot.paramMap.get('id'));
+  id: string | null = this.route.snapshot.paramMap.get('id');
   imagem: string = '../../../assets/img/gestor-de-projeto.png';
 
   get nomeCompleto() {
@@ -96,6 +96,19 @@ export class CadastroComponent implements OnInit {
     return this.objetoPost;
   }
 
+  postOuPut() {
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+
+    if (this.formulario.invalid) return;
+    this.popularObjeto();
+    id ? this.put(id) : this.post();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      this.router.navigate(['/pesquisa']);
+    }, 1000);
+  }
+
   getDadosFuncionarios(): void {
     this.projetoService.getId(this.id).subscribe((funcionario) => {
       (this.nome = funcionario.nome),
@@ -105,7 +118,8 @@ export class CadastroComponent implements OnInit {
         (this.email = funcionario.email),
         (this.github = funcionario.github),
         (this.linkedin = funcionario.linkedin),
-        (this.telefone = funcionario.telefone);
+        (this.telefone = funcionario.telefone),
+        (this.existeFuncionario = true);
     });
   }
 
@@ -119,20 +133,5 @@ export class CadastroComponent implements OnInit {
     this.projetoService.put(id, this.objetoPost).subscribe(() => {
       this.postEnviado = true;
     });
-  }
-
-  postOuPut() {
-    const id: string | null = this.route.snapshot.paramMap.get('id');
-
-    if (this.formulario.invalid) return;
-
-    this.popularObjeto();
-    id ? this.put(id) : this.post();
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    setTimeout(() => {
-      this.router.navigate(['/pesquisa']);
-    }, 1000);
   }
 }
