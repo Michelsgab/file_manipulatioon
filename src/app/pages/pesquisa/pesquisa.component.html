@@ -14,6 +14,14 @@
 
     <section class="conteudo__card">
       <article class="card" *ngFor="let items of funcionarios">
+        <div class="icones__card__editar">
+          <a (click)="getFuncionariosId(items.id)" target="_blank"
+            ><i class="bx bxs-pencil icone bx-md"></i
+          ></a>
+          <a (click)="deletaFuncionarios(items.id)" target="_blank"
+            ><i class="bx bx-x icone__excluir bx-md"></i
+          ></a>
+        </div>
         <aside class="conteudo__imagem">
           <figure class="card__imagem">
             <img
@@ -31,18 +39,16 @@
           </p>
           <div class="informacoes">
             <button class="article__btn">Currículo</button>
-            <a href="mailto:gspindola@magnasistemas.com.br" target="_blank"
+            <a href="{{ 'mailto:' + items.email }}" target="_blank"
               ><i class="bx bx-envelope icone bx-md"></i
             ></a>
-            <a href="https://wa.me/5511983638764" target="_blank"
+            <a href="{{ 'https://wa.me/' + items.telefone }}" target="_blank"
               ><i class="bx bxl-whatsapp icone bx-md"></i
             ></a>
-            <a
-              href="https://www.linkedin.com/in/gabrielmichels/"
-              target="_blank"
+            <a href="{{ items.linkedin }}" target="_blank"
               ><i class="bx bxl-linkedin icone bx-md"></i
             ></a>
-            <a href="https://github.com/Michelsgab" target="_blank"
+            <a href="{{ items.github }}" target="_blank"
               ><i class="bx bxl-github icone bx-md"></i
             ></a>
           </div>

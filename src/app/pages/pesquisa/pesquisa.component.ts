@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IFuncionario } from 'src/app/Funcionario';
 import { ProjetoService } from 'src/app/service/projeto.service';
@@ -9,17 +9,29 @@ import { ProjetoService } from 'src/app/service/projeto.service';
   styleUrls: ['./pesquisa.component.css'],
 })
 export class PesquisaComponent implements OnInit {
+  postEnviado: boolean = false;
   funcionarios: Array<IFuncionario> = [];
 
   constructor(private projetoService: ProjetoService, private router: Router) {
-    this.getFuncionariosId();
+    this.getFuncionarios();
   }
 
   ngOnInit(): void {}
 
-  getFuncionariosId(): void {
+  getFuncionarios(): void {
     this.projetoService
       .getAll()
       .subscribe((funcionario) => (this.funcionarios = funcionario));
+  }
+
+  getFuncionariosId(id: any) {
+    const pegaId: string = id;
+    this.router.navigate(['cadastro/', pegaId]);
+  }
+
+  deletaFuncionarios(id: any): void {
+    this.projetoService.delete(id).subscribe(() => {
+      this.getFuncionarios();
+    });
   }
 }
