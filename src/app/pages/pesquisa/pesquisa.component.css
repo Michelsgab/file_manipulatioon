@@ -150,7 +150,7 @@ body {
 }
 
 .icone__excluir:hover {
-  color: rgb(165, 0, 0);
+  color: rgb(226, 0, 0);
   cursor: pointer;
   transform: scale(1.08);
 }
