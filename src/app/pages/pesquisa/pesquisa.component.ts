@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IFuncionario } from 'src/app/Funcionario';
 import { ProjetoService } from 'src/app/service/projeto.service';
@@ -10,6 +10,7 @@ import { ProjetoService } from 'src/app/service/projeto.service';
 })
 export class PesquisaComponent implements OnInit {
   postEnviado: boolean = false;
+  term!: string;
   funcionarios: Array<IFuncionario> = [];
 
   constructor(private projetoService: ProjetoService, private router: Router) {

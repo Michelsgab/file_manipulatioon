@@ -1,8 +1,9 @@
 <body>
   <main>
-    <form action="" class="form__pesquisa">
+    <div action="" class="form__pesquisa">
       <input
         type="text"
+        [(ngModel)]="term"
         placeholder="Pesquise..."
         nome="pesquisa"
         class="form__input"
@@ -10,10 +11,10 @@
       <button type="submit" class="form__botao">
         <i class="bx bx-search bx-md icone__pesquisa"></i>
       </button>
-    </form>
+    </div>
 
     <section class="conteudo__card">
-      <article class="card" *ngFor="let items of funcionarios">
+      <article class="card" *ngFor="let items of funcionarios | filter: term">
         <div class="icones__card__editar">
           <a (click)="getFuncionariosId(items.id)" target="_blank"
             ><i class="bx bxs-pencil icone bx-md"></i
