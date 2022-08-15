@@ -13,7 +13,7 @@
     </form>
 
     <section class="conteudo__card">
-      <article class="card">
+      <article class="card" *ngFor="let items of funcionarios">
         <aside class="conteudo__imagem">
           <figure class="card__imagem">
             <img
@@ -24,11 +24,10 @@
           </figure>
         </aside>
         <div class="card__conteudo">
-          <h2 class="nome">Gabriel Michels</h2>
-          <h3 class="cargo">Trainee</h3>
+          <h2 class="nome">{{ items.nome }}</h2>
+          <h3 class="cargo">{{ items.cargo }}</h3>
           <p class="descricao">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam hic
-            ipsa provident modi aliquam illum eum numquam cum odit, explicabo.
+            {{ items.descricao }}
           </p>
           <div class="informacoes">
             <button class="article__btn">Currículo</button>

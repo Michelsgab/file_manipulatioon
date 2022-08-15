@@ -1,21 +1,41 @@
-<h1 class="titulo">Cadastro de Funcionário</h1>
+<h1 class="titulo" *ngIf="!existeFuncionario">Cadastro de Funcionário</h1>
+<h1 class="titulo" *ngIf="existeFuncionario">Edite um Funcionário</h1>
+
+<div *ngIf="postEnviado" class="post-enviado">
+  <p *ngIf="existeFuncionario">Funcionário editado!</p>
+  <p *ngIf="!existeFuncionario">Funcionário cadastrado!</p>
+</div>
+
 <div class="container">
   <div class="container__cadastro">
     <section class="section__imagem">
       <img [src]="imagem" alt="Nome" class="imagem" />
-      <article class="btn">
-        <button class="article__btn">Editar Imagem</button>
-        <button class="article__btn">Salvar Currículo</button>
-      </article>
+      <form class="btn" [formGroup]="formulario">
+        <input
+          type="file"
+          name="imagem"
+          accept="image/png, image/jpeg"
+          class="article__btn"
+        />
+        <input
+          type="file"
+          name="curriculo"
+          accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+        text/plain, application/pdf"
+          class="article__btn"
+        />
+      </form>
     </section>
     <aside>
-      <form action="#">
+      <form [formGroup]="formulario" (ngSubmit)="postOuPut()" #formDir="ngForm">
         <div class="detalhes__form">
           <div class="input-box">
             <label for="nomeCompleto" class="detalhes">Nome completo: </label>
             <input
               type="text"
+              [(ngModel)]="nome"
               name="nomeCompleto"
+              formControlName="nome"
               placeholder="Insira seu nome completo"
               required
             />
@@ -25,6 +45,8 @@
             <input
               type="text"
               name="cargo"
+              [(ngModel)]="cargo"
+              formControlName="cargo"
               placeholder="Insira seu cargo"
               required
             />
@@ -34,6 +56,8 @@
             <input
               type="text"
               name="empresa"
+              [(ngModel)]="empresa"
+              formControlName="empresa"
               placeholder="Insira sua empresa"
               required
             />
@@ -43,6 +67,8 @@
             <input
               type="text"
               name="descricao"
+              [(ngModel)]="descricao"
+              formControlName="descricao"
               placeholder="Insira uma descrição"
               required
             />
@@ -52,6 +78,8 @@
             <input
               type="email"
               name="email"
+              [(ngModel)]="email"
+              formControlName="email"
               placeholder="Insira seu e-mail"
               required
             />
@@ -61,6 +89,8 @@
             <input
               type="text"
               name="github"
+              [(ngModel)]="github"
+              formControlName="github"
               placeholder="Insira seu github"
               required
             />
@@ -70,6 +100,8 @@
             <input
               type="text"
               name="linkedin"
+              [(ngModel)]="linkedin"
+              formControlName="linkedin"
               placeholder="Insira seu perfil no linkedin"
               required
             />
@@ -79,13 +111,15 @@
             <input
               type="tel"
               name="telefone"
+              [(ngModel)]="telefone"
+              formControlName="telefone"
               placeholder="Insira seu telefone"
               required
             />
           </div>
         </div>
         <div class="container__btn__salvar">
-          <button class="article__btn__salvar">Salvar</button>
+          <button class="article__btn__salvar" type="submit">Salvar</button>
         </div>
       </form>
     </aside>
