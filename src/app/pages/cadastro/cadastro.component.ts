@@ -3,6 +3,7 @@ import { ProjetoService } from 'src/app/service/projeto.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPostFuncionario } from 'src/app/Funcionario';
+import { Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,13 +20,16 @@ export class CadastroComponent implements OnInit {
   linkedin!: string | undefined;
   telefone!: string | undefined;
   curriculo!: string | undefined;
-  foto!: string | undefined;
+  foto!: ArrayBuffer | any;
   postEnviado: boolean = false;
-  existeFuncionario!: boolean;
+  existeFuncionario: boolean = false;
   objetoPost: IPostFuncionario = {} as IPostFuncionario;
   formulario!: FormGroup;
-  id: string = String(this.route.snapshot.paramMap.get('id'));
-  imagem: string = '../../../assets/img/gestor-de-projeto.png';
+  minhaImagem!: Observable<any>;
+  base64Code!: any;
+  imagemSalva: boolean = false;
+  id: string | null = this.route.snapshot.paramMap.get('id');
+  imagem: string = '../../../assets/img/foto_exemplo.png';
 
   get nomeCompleto() {
     return this.formulario.get('nomeCompleto')!;
@@ -59,6 +63,14 @@ export class CadastroComponent implements OnInit {
     return this.formulario.get('telefone')!;
   }
 
+  get curriculoFuncionario() {
+    return this.formulario.get('curriculo')!;
+  }
+
+  get fotoFuncionario() {
+    return this.formulario.get('foto')!;
+  }
+
   constructor(
     private projetoService: ProjetoService,
     private router: Router,
@@ -80,6 +92,8 @@ export class CadastroComponent implements OnInit {
         Validators.required,
         Validators.maxLength(11),
       ]),
+      curriculo: new FormControl('', [Validators.required]),
+      foto: new FormControl('', [Validators.required]),
     });
   }
 
@@ -92,8 +106,59 @@ export class CadastroComponent implements OnInit {
     this.objetoPost.github = this.github;
     this.objetoPost.linkedin = this.linkedin;
     this.objetoPost.telefone = this.telefone;
+    this.objetoPost.curriculo = this.curriculo;
+    this.objetoPost.foto = this.foto;
 
     return this.objetoPost;
+  }
+
+  upload($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+
+    this.converterBase64(file);
+  }
+
+  converterBase64(arquivo: File) {
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.lerArquivo(arquivo, subscriber);
+    });
+
+    observable.subscribe((res) => {
+      this.minhaImagem = res;
+      this.base64Code = res;
+      this.imagemSalva = true;
+      console.log(res);
+    });
+  }
+
+  lerArquivo(arquivo: File, subscriber: Subscriber<any>) {
+    const leituraArquivo = new FileReader();
+    leituraArquivo.readAsDataURL(arquivo);
+
+    leituraArquivo.onload = () => {
+      subscriber.next(leituraArquivo.result);
+      subscriber.complete();
+    };
+
+    leituraArquivo.onerror = () => {
+      subscriber.error();
+      subscriber.complete();
+    };
+  }
+
+  postOuPut() {
+    console.log(this.foto);
+    const id: string | null = this.route.snapshot.paramMap.get('id');
+
+    if (this.formulario.invalid) return;
+    this.popularObjeto();
+    id ? this.put(id) : this.post();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      this.router.navigate(['/pesquisa']);
+    }, 1000);
   }
 
   getDadosFuncionarios(): void {
@@ -105,7 +170,9 @@ export class CadastroComponent implements OnInit {
         (this.email = funcionario.email),
         (this.github = funcionario.github),
         (this.linkedin = funcionario.linkedin),
-        (this.telefone = funcionario.telefone);
+        (this.telefone = funcionario.telefone),
+        (this.curriculo = funcionario.curriculo),
+        (this.existeFuncionario = true);
     });
   }
 
@@ -119,20 +186,5 @@ export class CadastroComponent implements OnInit {
     this.projetoService.put(id, this.objetoPost).subscribe(() => {
       this.postEnviado = true;
     });
-  }
-
-  postOuPut() {
-    const id: string | null = this.route.snapshot.paramMap.get('id');
-
-    if (this.formulario.invalid) return;
-
-    this.popularObjeto();
-    id ? this.put(id) : this.post();
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    setTimeout(() => {
-      this.router.navigate(['/pesquisa']);
-    }, 1000);
   }
 }

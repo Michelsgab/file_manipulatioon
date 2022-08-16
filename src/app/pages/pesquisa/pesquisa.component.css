@@ -64,6 +64,11 @@ body {
   background-color: #bfbef9;
 }
 
+.icones__card__editar {
+  display: flex;
+  flex-direction: column;
+}
+
 .conteudo__imagem,
 .card__conteudo {
   display: flex;
@@ -136,6 +141,20 @@ body {
   background-color: #000f97;
 }
 
+.icone__excluir {
+  height: 36px;
+  width: 36px;
+  margin: 0 2px;
+  color: rgb(162, 15, 15);
+  transition: ease-in-out 0.1s;
+}
+
+.icone__excluir:hover {
+  color: rgb(226, 0, 0);
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
 .icone {
   height: 30px;
   width: 30px;
@@ -166,6 +185,10 @@ body {
     max-width: 96%;
     padding: 10px;
     background-color: #bfbef9;
+  }
+
+  .icones__card__editar {
+    flex-direction: row;
   }
 }
 

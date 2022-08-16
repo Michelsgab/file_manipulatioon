@@ -9,7 +9,7 @@ export interface IFuncionario {
   linkedin?: string;
   telefone?: string;
   curriculo?: string;
-  foto?: string;
+  foto?: ArrayBuffer | string;
 }
 
 export interface IPostFuncionario {
@@ -22,5 +22,5 @@ export interface IPostFuncionario {
   linkedin?: string;
   telefone?: string;
   curriculo?: string;
-  foto?: string;
+  foto?: ArrayBuffer | string;
 }
