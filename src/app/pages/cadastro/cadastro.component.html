@@ -1,26 +1,28 @@
-<h1 class="titulo" >{{existeFuncionario ? "Edite um Funcionário" : "Cadastrar um Funcionário"}}</h1>
-<!-- <h1 class="titulo" *ngIf="!existeFuncionario">Edite um Funcionário</h1> -->
-
-<div *ngIf="postEnviado" class="post-enviado">
-  <p *ngIf="existeFuncionario">Funcionário editado!</p>
-  <p *ngIf="!existeFuncionario">Funcionário cadastrado!</p>
-</div>
+<h1 class="titulo">
+  {{ existeFuncionario ? "Edite um Funcionário" : "Cadastrar um Funcionário" }}
+</h1>
 
 <div class="container">
   <div class="container__cadastro">
     <section class="section__imagem">
-      <img [src]="imagem" alt="Nome" class="imagem" />
-      <form class="btn" [formGroup]="formulario">
+      <ng-container *ngIf="!imagemSalva">
+        <img [src]="imagem" alt="Nome" class="foto" #salvaImagem />
+      </ng-container>
+      <ng-container *ngIf="imagemSalva">
+        <img [src]="minhaImagem" alt="Nome" class="foto" #salvaImagem />
+      </ng-container>
+      <form class="btn" [formGroup]="formulario" #formDir="ngForm">
         <input
           type="file"
-          name="imagem"
-          (change)="printar($event)"
+          name="foto"
+          (change)="upload($event)"
+          formControlName="foto"
           accept="image/png, image/jpeg"
           class="article__btn"
         />
         <input
-          href="../../../curriculos/Certificado Alura.pdf"
-          download
+          (change)="upload($event)"
+          formControlName="curriculo"
           type="file"
           name="curriculo"
           accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
