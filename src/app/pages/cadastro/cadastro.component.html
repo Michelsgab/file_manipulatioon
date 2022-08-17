@@ -5,23 +5,43 @@
 <div class="container">
   <div class="container__cadastro">
     <section class="section__imagem">
-      <ng-container *ngIf="!imagemSalva">
-        <img [src]="imagem" alt="Nome" class="foto" #salvaImagem />
+      <ng-container *ngIf="existeFuncionario">
+        <ng-container *ngIf="!imagemSalva">
+          <img
+            src="{{
+              'http://127.0.0.1:5000/projetos/imagens/' +
+                this.nome?.replace(' ', '_') +
+                '.png'
+            }}"
+            alt="Nome"
+            class="foto"
+            #salvaImagem
+          />
+        </ng-container>
+        <ng-container *ngIf="imagemSalva">
+          <img [src]="minhaImagem" alt="Nome" class="foto" #salvaImagem />
+        </ng-container>
       </ng-container>
-      <ng-container *ngIf="imagemSalva">
-        <img [src]="minhaImagem" alt="Nome" class="foto" #salvaImagem />
+      <ng-container *ngIf="!existeFuncionario">
+        <ng-container *ngIf="!imagemSalva">
+          <img [src]="imagem" alt="Nome" class="foto" #salvaImagem />
+        </ng-container>
+        <ng-container *ngIf="imagemSalva">
+          <img [src]="minhaImagem" alt="Nome" class="foto" #salvaImagem />
+        </ng-container>
       </ng-container>
       <form class="btn" [formGroup]="formulario" #formDir="ngForm">
         <input
           type="file"
           name="foto"
-          (change)="upload($event)"
+          id="imagem"
+          (change)="uploadFoto($event)"
           formControlName="foto"
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpeg, text/plain"
           class="article__btn"
         />
         <input
-          (change)="upload($event)"
+          (change)="uploadArquivo($event)"
           formControlName="curriculo"
           type="file"
           name="curriculo"

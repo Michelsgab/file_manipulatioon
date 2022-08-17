@@ -130,6 +130,31 @@ input {
   border-bottom-width: 2px;
 }
 
+.upload__btn {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #1d30dd;
+  transition: ease-in-out 0.1s;
+}
+
+.upload__btn:hover {
+  transform: scale(1.05);
+  background-color: #000f97;
+}
+
+.input__file {
+  display: none;
+}
+
 input:focus,
 input:valid {
   border-color: #000f97;
