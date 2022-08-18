@@ -20,13 +20,12 @@ export class CadastroComponent implements OnInit {
   linkedin!: string | undefined;
   telefone!: string | undefined;
   curriculo!: string | undefined;
-  foto!: ArrayBuffer | any;
+  foto!: string | undefined;
   postEnviado: boolean = false;
   existeFuncionario: boolean = false;
   objetoPost: IPostFuncionario = {} as IPostFuncionario;
   formulario!: FormGroup;
   minhaImagem!: Observable<any>;
-  base64Code!: any;
   imagemSalva: boolean = false;
   id: string | null = this.route.snapshot.paramMap.get('id');
   imagem: string = '../../../assets/img/foto_exemplo.png';
@@ -81,19 +80,16 @@ export class CadastroComponent implements OnInit {
     if (this.id) this.getDadosFuncionarios();
 
     this.formulario = new FormGroup({
-      nome: new FormControl('', [Validators.required]),
-      descricao: new FormControl('', [Validators.required]),
-      cargo: new FormControl('', [Validators.required]),
-      empresa: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      github: new FormControl('', [Validators.required]),
-      linkedin: new FormControl('', [Validators.required]),
-      telefone: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(11),
-      ]),
-      curriculo: new FormControl('', [Validators.required]),
-      foto: new FormControl('', [Validators.required]),
+      nome: new FormControl(''),
+      descricao: new FormControl(''),
+      cargo: new FormControl(''),
+      empresa: new FormControl(''),
+      email: new FormControl(''),
+      github: new FormControl(''),
+      linkedin: new FormControl(''),
+      telefone: new FormControl(''),
+      curriculo: new FormControl(''),
+      foto: new FormControl(''),
     });
   }
 
@@ -112,23 +108,41 @@ export class CadastroComponent implements OnInit {
     return this.objetoPost;
   }
 
-  upload($event: Event) {
+  uploadFoto($event: Event) {
     const target = $event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
 
-    this.converterBase64(file);
+    this.converterBase64Foto(file);
   }
 
-  converterBase64(arquivo: File) {
+  uploadArquivo($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    this.converterBase64Arquivo(file);
+  }
+
+  converterBase64Foto(arquivo: File) {
     const observable = new Observable((subscriber: Subscriber<any>) => {
       this.lerArquivo(arquivo, subscriber);
     });
 
     observable.subscribe((res) => {
       this.minhaImagem = res;
-      this.base64Code = res;
+      this.foto = res.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
       this.imagemSalva = true;
-      console.log(res);
+    });
+  }
+
+  converterBase64Arquivo(arquivo: File) {
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.lerArquivo(arquivo, subscriber);
+    });
+
+    observable.subscribe((res) => {
+      this.curriculo = res.replace(
+        /^data:application\/(pdf|word|txt);base64,/,
+        ''
+      );
     });
   }
 
@@ -148,7 +162,6 @@ export class CadastroComponent implements OnInit {
   }
 
   postOuPut() {
-    console.log(this.foto);
     const id: string | null = this.route.snapshot.paramMap.get('id');
 
     if (this.formulario.invalid) return;

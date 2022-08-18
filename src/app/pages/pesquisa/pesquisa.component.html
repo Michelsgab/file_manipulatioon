@@ -1,6 +1,6 @@
 <body>
   <main>
-    <div action="" class="form__pesquisa">
+    <div class="form__pesquisa">
       <input
         type="text"
         [(ngModel)]="term"
@@ -26,7 +26,11 @@
         <aside class="conteudo__imagem">
           <figure class="card__imagem">
             <img
-              src="../../../assets/img/foto_exemplo.png"
+              src="{{
+                'http://127.0.0.1:5000/projetos/imagens/' +
+                  items.nome.replace(' ', '_') +
+                  '.png'
+              }}"
               alt=""
               class="card__img"
             />
@@ -39,7 +43,14 @@
             {{ items.descricao }}
           </p>
           <div class="informacoes">
-            <a href="../../alura.pdf" download>
+            <a
+              href="{{
+                'http://127.0.0.1:5000/projetos/curriculos/' +
+                  items.nome.replace(' ', '_') +
+                  '.pdf'
+              }}"
+              download
+            >
               <button class="article__btn">Currículo</button>
             </a>
             <a href="{{ 'mailto:' + items.email }}" target="_blank"
