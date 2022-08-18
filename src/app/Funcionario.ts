@@ -1,26 +1,26 @@
 export interface IFuncionario {
   id?: number;
+  foto?: string;
   nome?: string;
-  descricao?: string;
   cargo?: string;
-  empresa?: string;
   email?: string;
   github?: string;
+  empresa?: string;
   linkedin?: string;
   telefone?: string;
   curriculo?: string;
-  foto?: string;
+  descricao?: string;
 }
 
 export interface IPostFuncionario {
   nome?: string;
-  descricao?: string;
+  foto?: string;
   cargo?: string;
-  empresa?: string;
   email?: string;
   github?: string;
+  empresa?: string;
   linkedin?: string;
   telefone?: string;
   curriculo?: string;
-  foto?: string;
+  descricao?: string;
 }

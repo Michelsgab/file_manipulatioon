@@ -34,7 +34,6 @@
         <input
           type="file"
           name="foto"
-          id="imagem"
           (change)="uploadFoto($event)"
           formControlName="foto"
           accept="image/png, image/jpeg, text/plain"
@@ -52,7 +51,7 @@
       </form>
     </section>
     <aside>
-      <form [formGroup]="formulario" (ngSubmit)="postOuPut()" #formDir="ngForm">
+      <form [formGroup]="formulario" (ngSubmit)="postOuPut()">
         <div class="detalhes__form">
           <div class="input-box">
             <label for="nomeCompleto" class="detalhes">Nome completo: </label>
@@ -101,7 +100,7 @@
           <div class="input-box">
             <label for="email" class="detalhes">E-mail: </label>
             <input
-              type="text"
+              type="email"
               name="email"
               [(ngModel)]="email"
               formControlName="email"

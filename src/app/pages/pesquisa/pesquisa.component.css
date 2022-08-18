@@ -56,12 +56,12 @@ body {
 
 .card {
   width: 750px;
-  margin: 10px;
   display: flex;
-  justify-content: space-around;
   border-radius: 20px;
   align-items: center;
+  margin-bottom: 60px;
   background-color: #bfbef9;
+  justify-content: space-around;
 }
 
 .icones__card__editar {
@@ -91,8 +91,8 @@ body {
 }
 
 .card__img {
-  height: 100%;
   width: 100%;
+  height: 100%;
   border-radius: 40%;
 }
 
@@ -171,18 +171,18 @@ body {
 @media (max-width: 768px) {
 
   .form__pesquisa {
-    margin-left: 60px;
     width: 650px;
     max-width: 85%;
+    margin-left: 60px;
   }
 
   .card {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 80px;
     width: 95%;
-    max-width: 96%;
     padding: 10px;
+    display: flex;
+    max-width: 96%;
+    margin-bottom: 80px;
+    flex-direction: column;
     background-color: #bfbef9;
   }
 
@@ -193,16 +193,16 @@ body {
 
 @media (max-width: 689px) {
   .form__pesquisa {
-    margin-left: 60px;
     width: 550px;
     max-width: 85%;
+    margin-left: 60px;
   }
 }
 
 @media (max-width: 576px) {
   .form__pesquisa {
-    margin-left: 60px;
     width: 450px;
     max-width: 85%;
+    margin-left: 60px;
   }
 }

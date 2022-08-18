@@ -10,7 +10,7 @@ import { IFuncionario } from '../Funcionario';
 export class ProjetoService {
   private apiUrl: string = 'http://127.0.0.1:5000/projetos';
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<IFuncionario[]> {
     return this.http.get<IFuncionario[]>(this.apiUrl);
